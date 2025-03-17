@@ -1,0 +1,284 @@
+:root{
+    --Dark: #626F47;
+    --light: #A4B465;
+    --contrast: #640D5F;
+}
+.main-head{
+    text-align: center !important;
+    font-size: larger;
+    font-weight: bold;
+    color: var(--Dark);
+}
+.inp{
+    /* width: 100%; */
+    padding: 9px 20px;
+    margin: 8px 0;
+    margin-right: 7px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 7px;
+}
+
+/* From Uiverse.io by alexruix */ 
+.loader {
+    width: 48px;
+    height: 48px;
+    margin: auto;
+    position: relative;
+    margin-top: 150px;
+  }
+  
+  .loader:before {
+    content: '';
+    width: 48px;
+    height: 5px;
+    background: var(--Dark);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    border-radius: 50%;
+    animation: shadow324 0.5s linear infinite;
+  }
+  
+  .loader:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: var(--light);
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 4px;
+    animation: jump7456 0.5s linear infinite;
+  }
+  
+  @keyframes jump7456 {
+    15% {
+      border-bottom-right-radius: 3px;
+    }
+  
+    25% {
+      transform: translateY(9px) rotate(22.5deg);
+    }
+  
+    50% {
+      transform: translateY(18px) scale(1, .9) rotate(45deg);
+      border-bottom-right-radius: 40px;
+    }
+  
+    75% {
+      transform: translateY(9px) rotate(67.5deg);
+    }
+  
+    100% {
+      transform: translateY(0) rotate(90deg);
+    }
+  }
+  
+  @keyframes shadow324 {
+  
+    0%,
+      100% {
+      transform: scale(1, 1);
+    }
+  
+    50% {
+      transform: scale(1.2, 1);
+    }
+  }
+
+/* From Uiverse.io by cssbuttons-io */ 
+.button {
+  display: inline-block;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  transition: all 0.2s ease-in;
+  position: relative;
+  overflow: hidden;
+  font-size: 16px;
+  cursor: pointer;
+  color: white;
+  background-color: var(--light) !important;
+  z-index: 1;
+}
+
+.button:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.25);
+  top: 100%;
+  width: 140%;
+  height: 180%;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.button:after {
+  content: "";
+  position: absolute;
+  left: 55%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.45);
+  top: 180%;
+  width: 160%;
+  height: 190%;
+  background-color: var(--Dark) !important;
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.button:hover {
+  border: 1px solid var(--Dark) !important;
+}
+
+.button:hover:before {
+  top: -35%;
+  background-color: var(--Dark);
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+.button:hover:after {
+  top: -45%;
+  background-color: var(--Dark);
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+/* another */
+.search-button{
+  display: inline-block;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  transition: all 0.2s ease-in;
+  position: relative;
+  overflow: hidden;
+  font-size: 16px;
+  cursor: pointer;
+  color: white;
+  background-color: #f48d4d;
+  z-index: 1;
+}
+.search-button:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.25);
+  top: 100%;
+  width: 140%;
+  height: 180%;
+  background-color: var(#EB5B00);
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.search-button:after {
+  content: "";
+  position: absolute;
+  left: 55%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.45);
+  top: 180%;
+  width: 160%;
+  height: 190%;
+  background-color: var(--Dark) !important;
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.search-button:hover {
+  border: 1px solid var(--Dark) !important;
+}
+
+.search-button:hover:before {
+  top: -35%;
+  background-color: var(--Dark);
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+.search-button:hover:after {
+  top: -45%;
+  background-color: var(--Dark);
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+
+/* From Uiverse.io by reshades */ 
+.add-button {
+  background-color: #ffffff00;
+  /* color: #fff; */
+  width: 8.5em;
+  height: 2.9em;
+  border: var(--Dark) 0.1em solid;
+  border-radius: 11px;
+  text-align: right;
+  transition: all 0.6s ease;
+}
+
+.add-button:hover {
+  background-color: var(--Dark);
+  cursor: pointer;
+  color: white;
+}
+
+.add-button svg {
+  width: 1.6em;
+  margin-left: 0.5em;
+  position: absolute;
+  display: flex;
+  align-items: center !important;
+  transition: all 0.6s ease;
+}
+
+.add-button:hover svg {
+  transform: translateX(5px);
+  color: white;
+}
+
+.add-text {
+  margin: 0 0.5em;
+}
+.card{
+background-color: #fffce9 !important;
+}
+.card:hover{
+  cursor: pointer;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+}
+
+.published{
+  background-color: #e1edb4;
+  border-radius: 19px;
+  align-items: center;
+font-size: 12px;
+}
+
+@media screen and (max-width: 600px) {
+.header{
+  text-align: center;
+}
+.add-button{
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+  
+}
+@media screen and (max-width: 426px) {
+  .hidden-content {
+    display: none;
+  }
+  .inp{
+    width: 100%;
+  }
+  
+}
