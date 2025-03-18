@@ -273,6 +273,10 @@ font-size: 12px;
 }
   
 }
+.refresh{
+  background-color: #640D5F !important;
+  color: white !important;
+}
 @media screen and (max-width: 426px) {
   .hidden-content {
     display: none;
