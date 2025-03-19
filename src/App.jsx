@@ -2,15 +2,15 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import MyLayout from './components/Layout.jsx'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef} from 'react'
 import { LoadingOutlined, SearchOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 
 import axios from 'axios'
 import MyCard from './components/Cards.jsx';
 import AddBook from './components/SweetAlertForm.jsx';
-
 import { toast, ToastContainer } from "react-toastify";
+
 
 function App() {
 
@@ -18,6 +18,9 @@ function App() {
   const [books, setBooks] = useState([])
   const [refreshLoading, setRefreshLoading] = useState(false); // 🔹 Loading state for Refresh
   const[search, setSearch] = useState(false);
+
+  const inputRef = useRef(null); // 🔹 Create a reference for input field so that it would be focused when clicks on Nav
+
 
   useEffect(() => {
 
@@ -83,7 +86,7 @@ function App() {
   return (
     <>
 
-      <MyLayout>
+      <MyLayout inputRef={inputRef}>
         <div className="container">
 
           <ToastContainer />
@@ -91,7 +94,7 @@ function App() {
 
           <div className="header d-flex flex-wrap justify-content-between align-items-center mx-lg-5">
             <div className="">
-              <input type="text" placeholder='Enter Book' className='inp' value={inpBook} onChange={(e) => setInpBook(e.target.value)}/>
+              <input type="text" placeholder='Enter book name' className='inp'  ref={inputRef} value={inpBook} onChange={(e) => setInpBook(e.target.value)}/>
 
 
               {/* <button class="search-button" onClick={getBook}>Search</button> */}
@@ -162,5 +165,4 @@ function App() {
     </>
   )
 }
-
-export default App
+export default App;

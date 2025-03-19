@@ -3,15 +3,15 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
+  HomeOutlined,
+  FileSearchOutlined,
 } from '@ant-design/icons';
 import { Button, Layout, Menu, theme } from 'antd';
-
+import AddBook from './SweetAlertForm.jsx';
 
 const { Header, Sider, Content } = Layout;
 
-const MyLayout = ({children}) => {
+const MyLayout = ({ children, inputRef }) => {
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -32,18 +32,27 @@ const MyLayout = ({children}) => {
           items={[
             {
               key: '1',
-              icon: <UserOutlined />,
-              label: 'nav 1',
+              icon: <HomeOutlined />,
+              label: 'Home',
+              onClick: () => {
+                  window.location.href = '/';
+             }
             },
             {
               key: '2',
-              icon: <VideoCameraOutlined />,
-              label: 'nav 2',
+              icon: <FileSearchOutlined />,
+              label: 'Search Book',
+              onClick: () => {
+                if (inputRef && inputRef.current) {
+                  inputRef.current.focus(); // 🔹 Focus on input field
+                }
+              },
             },
             {
               key: '3',
               icon: <UploadOutlined />,
-              label: 'nav 3',
+              label: 'Upload',
+            
             },
           ]}
         />
