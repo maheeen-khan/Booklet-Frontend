@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import MyLayout from './components/Layout.jsx'
 import { useState, useEffect } from 'react'
-import { SearchOutlined } from '@ant-design/icons';
+import { LoadingOutlined, SearchOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 
 import axios from 'axios'
@@ -17,6 +17,8 @@ function App() {
   const [inpBook, setInpBook] = useState('')
   const [books, setBooks] = useState([])
   const [refreshLoading, setRefreshLoading] = useState(false); // 🔹 Loading state for Refresh
+  const[search, setSearch] = useState(false);
+
   useEffect(() => {
 
     async function fetchData() {
@@ -54,6 +56,9 @@ function App() {
     catch (error) {
       console.error(error);
     }
+    finally {
+      setSearch(false); // 🔹 Reset loading state after fetching
+    }
 
   }
 
@@ -86,35 +91,54 @@ function App() {
 
           <div className="header d-flex flex-wrap justify-content-between align-items-center mx-lg-5">
             <div className="">
-              <input type="text" placeholder='Enter Book' className='inp' onChange={(e) => setInpBook(e.target.value)} />
+              <input type="text" placeholder='Enter Book' className='inp' value={inpBook} onChange={(e) => setInpBook(e.target.value)}/>
 
 
-              <button class="search-button" onClick={getBook}>Search</button>
+              {/* <button class="search-button" onClick={getBook}>Search</button> */}
+
+              <Button class="search-button"
+               style={{ 
+                position: "relative",
+                 overflow: "hidden",
+                  backgroundColor:"#f48d4d", 
+                  color: "white",
+                  border: "none",
+                  padding: "0px",
+                  padding: "19px"
+                 
+                }}
+                onClick={()=>{
+                setSearch(true);
+                setTimeout(() => {
+                  getBook();
+                  setInpBook('') //empty input field after search
+                }, 600);
+               
+                }}
+                icon={search ? <LoadingOutlined/> :  <SearchOutlined /> }>
+                 {search ? "Searching..." : "Search"}
+              </Button>
 
             </div>
 
+            <div className="">
+              {/* Refresh button */}
 
-            {/* Refresh button */}
+              <Button
+                className='refresh me-2'
+                loading={refreshLoading}
+                onClick={() => {
+                  setRefreshLoading(true); // Show loading before reload
+                  setTimeout(() => {
+                    window.location.reload(); // Reload after a slight delay
+                  }, 700); // Delay to allow React to update UI
+                }}
+              >
+                {refreshLoading ? "Refreshing..." : "Refresh"}
+              </Button>
+              <AddBook onBookAdded={handleBookAdded} setBooks={setBooks} />
+            </div>
 
-            {/* <button className='btn refresh' onClick={() => window.location.reload()}>
-              Refresh
-            </button> */}
-            <Button
-              type="primary"
-              loading={refreshLoading}
-              onClick={() => {
-                setRefreshLoading(true); // Show loading before reload
-                setTimeout(() => {
-                  window.location.reload(); // Reload after a slight delay
-                }, 700); // Delay to allow React to update UI
-              }}
-            >
-              {refreshLoading ? "Refreshing..." : "Refresh"}
-            </Button>
-
-
-            {/* <AddBook onBookAdded={setBooks} /> */}
-            <AddBook onBookAdded={handleBookAdded} setBooks={setBooks} />
           </div>
 
           {books.length === 0 &&
